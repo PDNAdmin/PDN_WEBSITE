@@ -1,13 +1,31 @@
+# dependencies
 node_modules
+
+# Next.js build output
 .next
 out
-.env*.local
-.env
-.vercel
-*.tsbuildinfo
 next-env.d.ts
+*.tsbuildinfo
+
+# env files (secrets). The template is committed.
+.env
+.env*.local
+.env.*
+!.env.example
+
+# Vercel CLI link (each machine links its own)
+.vercel
+
 # generated at build time from brand/fonts
 app/fonts/quirkfy/
 
-.vercel
-.env*
+# local tool output
+.taste-skill/
+.impeccable/
+.claude/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

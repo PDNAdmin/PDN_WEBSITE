@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { loadGsap } from "@/lib/motion/gsap";
 
 /**
- * Lenis smooth scroll (docs/07 §2). Desktop pointer:fine only, never on low tier or reduced motion.
- * Loaded lazily after idle so it never competes with first paint.
+ * Lenis smooth scroll (desktop pointer devices only; phones keep native scroll, which is faster).
+ * Loaded after idle. When GSAP is present, Lenis drives ScrollTrigger so pinned scenes stay in sync.
  */
 export function SmoothScroll() {
   useEffect(() => {
@@ -19,18 +20,24 @@ export function SmoothScroll() {
     let destroy: (() => void) | undefined;
     let cancelled = false;
     const start = async () => {
-      const { default: Lenis } = await import("lenis");
+      const [{ default: Lenis }, { gsap, ScrollTrigger }] = await Promise.all([import("lenis"), loadGsap()]);
       if (cancelled) return;
-      const headerH = parseInt(getComputedStyle(root).getPropertyValue("--header-h")) || 76;
+      const headerH = parseInt(getComputedStyle(root).getPropertyValue("--header-h")) || 72;
       const lenis = new Lenis({
         lerp: 0.1,
-        wheelMultiplier: 1,
         smoothWheel: true,
         syncTouch: false,
-        autoRaf: true,
+        autoRaf: false,
         anchors: { offset: -(headerH + 16), duration: 1.2, easing: riverEase },
       });
-      destroy = () => lenis.destroy();
+      lenis.on("scroll", ScrollTrigger.update);
+      const tick = (time: number) => lenis.raf(time * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+      destroy = () => {
+        gsap.ticker.remove(tick);
+        lenis.destroy();
+      };
     };
     const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
     if (w.requestIdleCallback) w.requestIdleCallback(() => void start(), { timeout: 1500 });
@@ -45,17 +52,12 @@ export function SmoothScroll() {
 
 /** cubic-bezier(0.65, 0, 0.35, 1), the "river" ease */
 function riverEase(t: number): number {
-  // Newton-Raphson on the bezier x(t) to find the parameter, then return y.
-  const x1 = 0.65,
-    y1 = 0,
-    x2 = 0.35,
-    y2 = 1;
-  const cx = 3 * x1,
-    bx = 3 * (x2 - x1) - cx,
-    ax = 1 - cx - bx;
-  const cy = 3 * y1,
-    by = 3 * (y2 - y1) - cy,
-    ay = 1 - cy - by;
+  const cx = 1.95,
+    bx = -2.85,
+    ax = 1.9;
+  const cy = 0,
+    by = 3,
+    ay = -2;
   let u = t;
   for (let i = 0; i < 6; i++) {
     const x = ((ax * u + bx) * u + cx) * u - t;

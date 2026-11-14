@@ -3,6 +3,8 @@ import { SectionHead } from "@/components/ui/Eyebrow";
 import { Copy, Tok } from "@/components/ui/Rich";
 import { SHOW_TOKENS, isFilled, shouldRender, resolvePlain } from "@/lib/tokens";
 import { BookingForm } from "./BookingForm";
+import { askAiLinks } from "@/lib/ask-ai";
+import { ArrowUpRight } from "@/components/ui/icons";
 
 /** HOME.BOOK (#book). Humbleteam's "Let's talk": the promise on a black field, the form on a white card. */
 export function BookingSection() {
@@ -14,6 +16,7 @@ export function BookingSection() {
       : FORM.serverErrorNoPhone;
   const showPhone = shouldRender(c.altPhone);
   const showEmail = shouldRender(c.altEmail);
+  const ai = askAiLinks();
 
   return (
     <section id="book" aria-labelledby="book-title" className="field-black section-y">
@@ -65,6 +68,21 @@ export function BookingSection() {
                 ) : null}
               </p>
             ) : null}
+
+            {/* Humbleteam: ask an AI assistant about PDN before booking */}
+            <div className="mt-10">
+              <p className="text-[#d8d8d4]">{ai.label}</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {ai.links.map((a) => (
+                  <li key={a.label}>
+                    <a href={a.href} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-1.5 bg-[var(--tone)] px-4 font-semibold transition-colors hover:bg-[#d4af37] hover:text-[#0a0a0a]">
+                      {a.label}
+                      <ArrowUpRight size={16} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { HOME, META } from "@/content/copy";
-import { realContent, settings } from "@/content/settings";
+import { settings, showreel } from "@/content/settings";
+import { featuredProjects } from "@/content/projects";
+import { stripClients } from "@/content/clients";
+import { shownTestimonials } from "@/content/testimonials";
 import { HeroHome } from "@/components/sections/HeroHome";
+import { LogoStrip } from "@/components/sections/LogoStrip";
 import { PainSection } from "@/components/sections/PainSection";
+import { ShowreelBlock } from "@/components/sections/ShowreelBlock";
 import { OutcomesSection } from "@/components/sections/OutcomesSection";
+import { WorkStack } from "@/components/sections/WorkStack";
 import { AudienceList } from "@/components/sections/AudienceList";
 import { ServicesStrip } from "@/components/sections/ServicesStrip";
+import { TestimonialsStats } from "@/components/sections/TestimonialsStats";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Pricing } from "@/components/sections/Pricing";
 import { PromiseBand } from "@/components/sections/PromiseBand";
@@ -14,8 +21,9 @@ import { BookingSection } from "@/components/sections/BookingSection";
 import { CloserStatement } from "@/components/sections/CloserStatement";
 import { MobileCTA } from "@/components/layout/MobileCTA";
 import { PreviewNote } from "@/components/layout/PreviewNote";
-import { isFilled } from "@/lib/tokens";
-import { siteUrl } from "@/lib/site";
+import { rich } from "@/components/ui/Rich";
+import { TOKENS, isFilled } from "@/lib/tokens";
+import { LIVE, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: META.home.title },
@@ -24,42 +32,78 @@ export const metadata: Metadata = {
   openGraph: { title: META.home.title, description: META.home.description, url: "/" },
 };
 
-/** Home (docs/03 §3 order, docs/11 direction). White, black and one gold field alternate. */
+/**
+ * Home (docs/13 sitemap, docs/11 direction). Conversion arc: hook → pain → proof → offer → book.
+ * Sections that need real material (logos, showreel, work, proof) render only when it exists;
+ * on preview builds a note marks where they will appear.
+ */
 export default function HomePage() {
-  const showMarquee = realContent.clientLogos.length >= 4;
-  const showWork = realContent.featuredProjects.length >= 3;
-  const statsFilled = HOME.proof.stats.filter((s) => isFilled(s.token)).length;
-  const showProof = statsFilled >= 2 || realContent.testimonials.length > 0;
+  const stats = HOME.proof.stats
+    .filter((s) => isFilled(s.token))
+    .map((s) => ({ value: TOKENS[s.token]!, suffix: s.suffix, label: s.label }));
+  const showProof = stats.length >= 2 || shownTestimonials.length > 0;
+  const showWork = featuredProjects.length > 0;
 
   return (
     <>
       <main id="main">
         <JsonLd />
         <HeroHome showWork={showWork} workHref="#work" />
-        {showMarquee ? null : (
+
+        {stripClients.length >= 4 ? (
+          <LogoStrip clients={stripClients} />
+        ) : (
           <div className="field-white">
-            <PreviewNote id="HOME.MARQUEE" reason="needs at least 4 real client logos (assets/clients/<slug>/logo.svg)." />
+            <PreviewNote id="HOME.MARQUEE" reason="appears with 4+ real client logos (content/clients.ts)." />
           </div>
         )}
+
         <PainSection />
-        {realContent.showreel ? null : (
+
+        {showreel.ready ? (
+          <ShowreelBlock
+            src={showreel.loop}
+            srcWebm={showreel.loopWebm}
+            srcMobile={showreel.loopMobile}
+            full={showreel.full}
+            poster={showreel.poster}
+            caption={HOME.showreel.caption}
+            labels={{ play: HOME.showreel.cursor, close: HOME.showreel.close }}
+          />
+        ) : (
           <div className="field-black pt-10">
-            <PreviewNote id="HOME.SHOWREEL" reason="waits for the real Koto-style showreel cut from client screen recordings (docs/12). Phase 3." />
+            <PreviewNote id="HOME.SHOWREEL" reason="appears when the reel cut from PDN's client recordings exists (docs/12)." />
           </div>
         )}
+
         <OutcomesSection />
-        <AudienceList />
-        {showWork ? null : (
-          <div className="field-white">
-            <PreviewNote id="HOME.WORK" reason="needs 3+ real, approved case studies. The hero's “See our work” button is hidden until then." />
-          </div>
-        )}
-        <ServicesStrip />
-        {showProof ? null : (
+
+        {showWork ? (
+          <WorkStack projects={featuredProjects} allWorkHref={LIVE.work ? "/work" : undefined} />
+        ) : (
           <div className="field-white pt-10">
-            <PreviewNote id="HOME.PROOF" reason="needs 2+ real stats or real testimonials with photo and permission." />
+            <PreviewNote id="HOME.WORK" reason="appears with PDN's real, approved projects (content/projects.ts). Send the links." />
           </div>
         )}
+
+        <AudienceList />
+        <ServicesStrip />
+
+        {showProof ? (
+          <TestimonialsStats
+            eyebrow={HOME.proof.eyebrow}
+            headline={rich(HOME.proof.headline)}
+            stats={stats}
+            testimonials={shownTestimonials}
+            prev={HOME.proof.prev}
+            next={HOME.proof.next}
+          />
+        ) : (
+          <div className="field-white pt-10">
+            <PreviewNote id="HOME.PROOF" reason="appears with 2+ real stats or real testimonials (content/testimonials.ts)." />
+          </div>
+        )}
+
         <ProcessSteps />
         <Pricing />
         <PromiseBand />

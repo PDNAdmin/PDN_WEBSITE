@@ -25,7 +25,8 @@ export const LIVE = {
   about: false,
   insights: false,
   digitalUniversity: false,
-  book: false,
+  /** /contact: the booking page used in ads (04 §10 /book copy). */
+  contact: true,
   privacy: false,
   terms: false,
 } as const;

@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/Button";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { IconCheck } from "@/components/ui/icons";
 import { SeeingDemo } from "./SeeingDemo";
+import { HeroMotion } from "./HeroMotion";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 /**
  * HOME.HERO (docs/11, from Ramotion): the question set huge, the real interface right beside it.
@@ -29,9 +31,11 @@ export function HeroHome({ showWork, workHref }: { showWork: boolean; workHref: 
           <div className="lg:col-span-5">
             <p className="max-w-[40ch] text-[1.25rem] leading-[1.5]">{c.lead}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href="#book" data-cta="hero" className="sm:min-w-[260px]">
-                {c.primary}
-              </Button>
+              <Magnetic className="max-sm:w-full">
+                <Button href="#book" data-cta="hero" className="w-full sm:min-w-[260px]">
+                  {c.primary}
+                </Button>
+              </Magnetic>
               {showWork ? (
                 <Button href={workHref} variant="quiet">
                   {c.secondary}
@@ -60,6 +64,7 @@ export function HeroHome({ showWork, workHref }: { showWork: boolean; workHref: 
           </div>
         </div>
       </div>
+      <HeroMotion titleId="hero-title" sectionId="hero" />
     </section>
   );
 }

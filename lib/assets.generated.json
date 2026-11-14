@@ -1,244 +1,35 @@
 {
-  "ILL-01": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024,
-    "src": "/img/illustrations/ill-01",
-    "widths": [
-      640,
-      960,
-      1280,
-      1536
-    ]
+  "HUM-01": {
+    "exists": false,
+    "placeholder": "website fragment on tone panel"
   },
-  "ILL-01m": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536,
-    "src": "/img/illustrations/ill-01m",
-    "widths": [
-      480,
-      768,
-      1024
-    ]
+  "HUM-02": {
+    "exists": false,
+    "placeholder": "map fragment on tone panel"
   },
-  "ILL-02": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024,
-    "src": "/img/illustrations/ill-02",
-    "widths": [
-      768,
-      1536
-    ]
+  "HUM-03": {
+    "exists": false,
+    "placeholder": "lock-screen fragment on tone panel"
   },
-  "ILL-03": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024,
-    "src": "/img/illustrations/ill-03",
-    "widths": [
-      480,
-      720,
-      1024
-    ]
+  "HUM-04": {
+    "exists": false,
+    "placeholder": "no image"
   },
-  "ILL-04": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024,
-    "src": "/img/illustrations/ill-04",
-    "widths": [
-      480,
-      720,
-      1024
-    ]
+  "HUM-05": {
+    "exists": false,
+    "placeholder": "no image"
   },
-  "ILL-05": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024,
-    "src": "/img/illustrations/ill-05",
-    "widths": [
-      480,
-      720,
-      1024
-    ]
+  "HUM-06": {
+    "exists": false,
+    "placeholder": "no image"
   },
-  "ILL-06": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024,
-    "src": "/img/illustrations/ill-06",
-    "widths": [
-      400,
-      800
-    ]
+  "HUM-07": {
+    "exists": false,
+    "placeholder": "no image"
   },
-  "ILL-07": {
-    "exists": true,
-    "width": 1254,
-    "height": 1254,
-    "src": "/img/illustrations/ill-07",
-    "widths": [
-      400,
-      800
-    ]
-  },
-  "ILL-08": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024,
-    "src": "/img/illustrations/ill-08",
-    "widths": [
-      400,
-      800
-    ]
-  },
-  "ILL-09": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024,
-    "src": "/img/illustrations/ill-09",
-    "widths": [
-      400,
-      800
-    ]
-  },
-  "ILL-10": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "ILL-11": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "ILL-12": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "ILL-13": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "ILL-13m": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536
-  },
-  "ILL-14": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "ILL-15": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "TEX-01": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024
-  },
-  "TEX-02": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "TEX-03": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "TEX-04": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024,
-    "src": "/img/textures/tex-04",
-    "widths": [
-      960,
-      1536
-    ]
-  },
-  "TEX-05": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "3D-01": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024
-  },
-  "3D-02": {
-    "exists": true,
-    "width": 1024,
-    "height": 1024
-  },
-  "SR-01": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-01-v": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536
-  },
-  "SR-02": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-02-v": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536
-  },
-  "SR-03": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-03-v": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536
-  },
-  "SR-04a": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-04b": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-04c": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-05": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-07": {
-    "exists": true,
-    "width": 1536,
-    "height": 1024
-  },
-  "SR-07-v": {
-    "exists": true,
-    "width": 1024,
-    "height": 1536
+  "HUM-08": {
+    "exists": false,
+    "placeholder": "no image"
   },
   "found:lagos-skyline-with-marina": {
     "exists": true,
@@ -265,46 +56,28 @@
   "AUDIO": {
     "exists": false
   },
-  "VO": {
-    "exists": false
-  },
-  "T1/T2": {
-    "exists": false
-  },
-  "T3": {
-    "exists": false
-  },
-  "T4": {
-    "exists": false
-  },
-  "team.json": {
-    "exists": false
-  },
-  "T5": {
-    "exists": false
-  },
-  "T6": {
-    "exists": false
-  },
-  "T7": {
+  "REC": {
     "exists": false
   },
   "CLIENTS": {
     "exists": false
   },
-  "REC": {
+  "T1/T2": {
     "exists": false
   },
-  "VID-hero-loop": {
+  "T4": {
+    "exists": false
+  },
+  "T5": {
+    "exists": false
+  },
+  "T7": {
     "exists": false
   },
   "VID-showreel-loop": {
     "exists": false
   },
   "VID-showreel-full": {
-    "exists": false
-  },
-  "SR-POSTER": {
     "exists": false
   }
 }

@@ -29,7 +29,7 @@ export function internalEmail(b: Booking) {
     ["Business", b.business ?? ""],
     ["Email", b.email],
     ["Phone / WhatsApp", phone],
-    ["I am a…", b.audience],
+    ["I am a…", b.audience ?? ""],
     ["I need…", b.need.join(", ")],
     ["Budget", b.budget ? `${b.budget} (${b.currency.toUpperCase()})` : ""],
     ["Launch", b.timeline ?? ""],

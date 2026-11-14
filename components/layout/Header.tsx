@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { GLOBAL } from "@/content/copy";
 import { Button } from "@/components/ui/Button";
+import { LagosClock } from "./LagosClock";
+import { MenuOverlay } from "./MenuOverlay";
 
 export type NavItem = { label: string; href: string };
 
@@ -12,7 +15,11 @@ export type NavItem = { label: string; href: string };
  * Header (docs/11, from Finsweet): a solid black bar, wordmark left, plain links, one gold action.
  * Hides on scroll-down past 400px, returns on scroll-up. Links to unbuilt routes are not rendered.
  */
-export function Header({ nav, bookHref }: { nav: NavItem[]; bookHref: string }) {
+export function Header({ nav, askAi }: { nav: NavItem[]; askAi: { label: string; links: { label: string; href: string }[] } }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  // pages with the form on them jump to it; everywhere else goes to /contact
+  const pathname = usePathname();
+  const bookHref = pathname === "/" || pathname === "/contact" ? "#book" : "/contact";
   const [hidden, setHidden] = useState(false);
   const last = useRef(0);
 
@@ -58,10 +65,29 @@ export function Header({ nav, bookHref }: { nav: NavItem[]; bookHref: string }) 
             </ul>
           </nav>
         ) : null}
-        <Button href={bookHref} size="sm" data-cta="header">
-          {GLOBAL.headerButton}
-        </Button>
+        <div className="flex items-center gap-5">
+          <LagosClock className="hidden text-small text-[#9a9a95] md:inline" />
+          <Button href={bookHref} size="sm" data-cta="header">
+            {GLOBAL.headerButton}
+          </Button>
+          {nav.length > 0 ? (
+            <button
+              type="button"
+              aria-expanded={menuOpen}
+              aria-controls="site-menu"
+              aria-label={menuOpen ? "Close menu" : "Menu"}
+              onClick={() => setMenuOpen((o) => !o)}
+              className="relative z-[61] grid h-11 w-11 place-items-center bg-[#161616] lg:hidden"
+            >
+              <span className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${menuOpen ? "translate-y-[1px] rotate-45" : "-translate-y-1"}`} />
+              <span className={`absolute block h-[2px] w-5 bg-white transition-transform duration-300 ${menuOpen ? "-rotate-45" : "translate-y-1"}`} />
+            </button>
+          ) : null}
+        </div>
       </div>
+      {nav.length > 0 ? (
+        <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} nav={nav} bookHref={bookHref} askAi={askAi} />
+      ) : null}
     </header>
   );
 }

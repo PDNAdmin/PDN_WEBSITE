@@ -3,7 +3,8 @@ import { GLOBAL } from "@/content/copy";
 import { Tok } from "@/components/ui/Rich";
 import { ArrowUpRight, IconInstagram, IconLinkedin, IconTiktok, IconX } from "@/components/ui/icons";
 import { SHOW_TOKENS, isFilled, resolvePlain } from "@/lib/tokens";
-import { siteDomain } from "@/lib/site";
+import { askAiLinks } from "@/lib/ask-ai";
+import { LagosClock } from "./LagosClock";
 import { Picture } from "@/components/ui/Picture";
 import credits from "@/found/credits.json";
 
@@ -13,13 +14,7 @@ type Link = { label: string; href: string };
 export function Footer({ explore, services, legal }: { explore: Link[]; services: Link[]; legal: Link[] }) {
   const f = GLOBAL.footer;
   const year = new Date().getFullYear();
-  const prompt = resolvePlain(f.askAi.prompt.replace("{{DOMAIN}}", isFilled("DOMAIN") ? "{{DOMAIN}}" : siteDomain()));
-  const q = encodeURIComponent(prompt);
-  const ai = [
-    { label: f.askAi.buttons[0], href: `https://chatgpt.com/?q=${q}` },
-    { label: f.askAi.buttons[1], href: `https://claude.ai/new?q=${q}` },
-    { label: f.askAi.buttons[2], href: `https://www.perplexity.ai/search?q=${q}` },
-  ];
+  const ai = askAiLinks().links;
   const talk = [
     { token: "PHONE", href: (v: string) => `tel:${v.replace(/[^\d+]/g, "")}` },
     { token: "WHATSAPP", label: f.talk.whatsappLabel, href: (v: string) => `https://wa.me/${v.replace(/\D/g, "")}` },
@@ -49,12 +44,15 @@ export function Footer({ explore, services, legal }: { explore: Link[]; services
             <p className="font-display max-w-[18ch] text-[clamp(2rem,1.2rem+2.4vw,3.5rem)] leading-[1] tracking-[-0.04em] text-gold">{f.brandLine}</p>
             <p className="mt-8 max-w-[44ch] text-[#d8d8d4]">{f.statement}</p>
           </div>
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-6">
+          {/* Finsweet mega-footer card */}
+          <div className="grid grid-cols-2 gap-10 bg-[var(--tone)] p-7 sm:grid-cols-3 sm:p-10 lg:col-span-6">
             {explore.length ? <Col title={f.explore.title} links={explore} /> : null}
             {services.length ? <Col title={f.services.title} links={services} /> : null}
             {talk.length ? (
               <div>
                 <h2 className="font-semibold">{f.talk.title}</h2>
+                {/* Koto: the studio, with its live clock */}
+                <LagosClock className="mt-1 block text-small text-[var(--grey)]" />
                 <ul className="mt-5 space-y-3 text-[#d8d8d4]">
                   {talk.map((t) => {
                     const v = resolvePlain(`{{${t.token}}}`);
@@ -125,6 +123,7 @@ export function Footer({ explore, services, legal }: { explore: Link[]; services
           width={456}
           height={140}
           unoptimized
+          data-reveal
           className="mt-[clamp(64px,8vw,120px)] h-auto w-full"
         />
 

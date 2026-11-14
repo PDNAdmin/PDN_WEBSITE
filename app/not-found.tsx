@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MISC } from "@/content/copy";
 import { rich } from "@/components/ui/Rich";
 import { Button } from "@/components/ui/Button";
-import { LIVE } from "@/lib/site";
 import { RIVER_D, RIVER_STROKE, RIVER_VIEWBOX } from "@/lib/river-path.generated";
 
 /** 404 (docs/04 §14): black field, the mark wandering off the edge. */
@@ -21,7 +20,7 @@ export default function NotFound() {
         <p className="mt-8 max-w-[40ch] text-[1.25rem] leading-[1.5] text-[#d8d8d4]">{MISC.notFound.body}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button href="/">{MISC.notFound.home}</Button>
-          <Button href={LIVE.book ? "/book" : "/#book"} variant="quiet">
+          <Button href="/contact" variant="quiet">
             {MISC.notFound.book}
           </Button>
         </div>

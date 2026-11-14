@@ -19,7 +19,7 @@ export const bookingSchema = z.object({
     .string()
     .transform((s) => s.replace(/[^\d]/g, "").replace(/^0+/, ""))
     .pipe(z.string().min(6, FORM.phone.error).max(14, FORM.phone.error)),
-  audience: z.enum(AUDIENCE, { message: FORM.audience.error }),
+  audience: z.enum(AUDIENCE).optional().catch(undefined),
   need: z.array(z.enum(NEED)).min(1, FORM.need.error),
   currency: z.enum(["ngn", "usd"]).default("ngn"),
   budget: opt(z.string()).refine((v) => v === undefined || BUDGETS.includes(v), "Invalid budget"),

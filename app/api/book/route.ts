@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     const fields: Record<string, string> = {};
     for (const issue of parsed.error.issues) {
       const k = String(issue.path[0] ?? "");
-      if (["name", "email", "phone", "audience", "need"].includes(k) && !fields[k]) fields[k] = issue.message;
+      if (["name", "email", "phone", "need"].includes(k) && !fields[k]) fields[k] = issue.message;
     }
     return reply(isJson, req, 422, { error: "invalid", fields });
   }
@@ -121,7 +121,13 @@ function reply(isJson: boolean, req: NextRequest, status: number, body: Record<s
     url.pathname = "/thank-you";
     url.search = name ? `?name=${encodeURIComponent(name)}` : "";
   } else {
-    url.pathname = "/";
+    // back to the page the form was on (/ or /contact), never off-site
+    let back = "/";
+    try {
+      const ref = new URL(req.headers.get("referer") ?? "");
+      if (ref.host === url.host) back = ref.pathname;
+    } catch {}
+    url.pathname = back;
     url.search = `?booking=error`;
     url.hash = "book";
   }

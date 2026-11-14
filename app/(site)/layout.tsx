@@ -2,6 +2,9 @@ import { Header, type NavItem } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { RevealObserver } from "@/components/motion/RevealObserver";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { Cursor } from "@/components/motion/Cursor";
+import { askAiLinks } from "@/lib/ask-ai";
 import { GLOBAL } from "@/content/copy";
 import { LIVE } from "@/lib/site";
 
@@ -31,15 +34,17 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     ...(LIVE.privacy ? [{ label: GLOBAL.footer.privacy, href: "/privacy" }] : []),
     ...(LIVE.terms ? [{ label: GLOBAL.footer.terms, href: "/terms" }] : []),
   ];
-  const bookHref = LIVE.book ? "/book" : "/#book";
+
+  const askAi = askAiLinks();
 
   return (
-    <>
+    <MotionProvider>
       <SmoothScroll />
-      <Header nav={nav} bookHref={bookHref} />
+      <Header nav={nav} askAi={askAi} />
       {children}
       <Footer explore={explore} services={services} legal={legal} />
       <RevealObserver />
-    </>
+      <Cursor />
+    </MotionProvider>
   );
 }

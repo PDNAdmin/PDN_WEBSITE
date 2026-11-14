@@ -29,6 +29,9 @@ Read this file fully, then read the docs in `/docs` in order before writing code
 | 08 | `docs/08-showreel-remotion.md` | Scene-by-scene Remotion spec for the showreel, hero loop, logo sting and ad cuts |
 | 09 | `docs/09-cms-content-model.md` | Sanity schemas for projects, testimonials, posts, team, products, settings |
 | 10 | `docs/10-build-plan.md` | Phases, task order, acceptance criteria, performance budget, launch checklist |
+| 11 | `docs/11-direction-v2.md` | **Current look:** black, white, gold ≈ 20% |
+| 12 | `docs/12-asset-brief-v2.md` | Real material + showreel brief |
+| 13 | `docs/13-sitemap-v2.md` | **Current sitemap**, build rounds and the move each page borrows |
 
 ---
 
@@ -36,8 +39,8 @@ Read this file fully, then read the docs in `/docs` in order before writing code
 
 - **Framework:** Next.js (App Router, latest stable), TypeScript strict, React Server Components by default
 - **Styling:** Tailwind CSS v4 with the tokens from `02-design-system.md` defined as CSS variables (`@theme`)
-- **Motion:** GSAP + ScrollTrigger (+ SplitText if licence available, else split manually) and Lenis smooth scroll
-- **3D:** three.js via `@react-three/fiber` + `@react-three/drei`, lazy-loaded, client-only
+- **Motion:** GSAP + ScrollTrigger + SplitText (scroll choreography, lazy-loaded), Motion / Framer Motion (component state, `LazyMotion` + `m`), Lenis smooth scroll (desktop pointers)
+- **WebGL:** `ogl` (approved by PDN 2026-11-14 instead of three.js/R3F for weight), lazy-loaded on capable devices only
 - **CMS:** Sanity (embedded Studio at `/studio`), `next-sanity`, ISR / on-demand revalidation via webhook
 - **Forms / email:** Next.js Route Handler → **Resend** (env `RESEND_API_KEY`, `BOOKING_TO_EMAIL`, `BOOKING_FROM_EMAIL`), zod validation, honeypot + time-trap spam protection
 - **Video:** Remotion project in `/showreel` (separate package in the same repo), renders to `/public/video`
@@ -86,7 +89,7 @@ pdn-website/
 6. **Conversion first.** "Book a free call" is reachable within one tap from anywhere: header button, sticky mobile CTA, end of every page.
 7. **Accessibility:** WCAG 2.2 AA. All motion respects `prefers-reduced-motion`. Every interactive element works by keyboard. Gold text on onyx only at ≥ 18px or bold ≥ 14px (contrast rules in 02).
 8. **Mobile first.** Most traffic arrives from Instagram/Facebook on phones. Design and test at 375 × 812 first, then 768, 1280, 1440, 1920.
-9. **No stock photography.** People in imagery are real PDN team members or real clients (see 06). Generated imagery is objects, textures, abstract 3D and illustration only — never fake people.
+9. **No stock photography.** People in imagery are real PDN team members or real clients (see 06). **Exception decided by PDN on 2026-11-14:** realistic generated people may appear as *illustrative scenes* (prompts in `prompt/assets.md`), never next to a testimonial, name, quote or rating, and never presented as PDN's team, clients or results. Replace them with real photos as soon as those exist.
 
 ---
 

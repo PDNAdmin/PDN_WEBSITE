@@ -46,27 +46,12 @@ export const settings = {
   ],
 };
 
-/** Real client content (Sanity in Phase 2). Sections hide while these are empty. */
-export const realContent = {
-  /** Client logos for HOME.MARQUEE (hidden until ≥ 4). */
-  clientLogos: [] as { name: string; src: string; url?: string }[],
-  /** Featured case studies for HOME.WORK (hidden until ≥ 3, max 6). */
-  featuredProjects: [] as {
-    slug: string;
-    client: string;
-    result: string;
-    tags: string[];
-    image: string;
-  }[],
-  /** Real, approved testimonials with photo + permission (HOME.PROOF). */
-  testimonials: [] as {
-    quote: string;
-    name: string;
-    role: string;
-    company: string;
-    photo: string;
-    rating?: number;
-  }[],
-  /** Showreel renders exist in /public/video (Phase 3). */
-  showreel: false,
+/** Showreel renders exist in /public/video (Remotion, cut from real client recordings). */
+export const showreel = {
+  ready: false,
+  loop: "/video/showreel-loop-1920x1080.mp4",
+  loopWebm: "/video/showreel-loop-1920x1080.webm",
+  loopMobile: "/video/showreel-loop-1080x1350.mp4",
+  full: "/video/showreel-1920x1080.mp4",
+  poster: "/video/showreel-poster.avif",
 };

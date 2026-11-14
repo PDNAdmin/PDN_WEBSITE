@@ -237,3 +237,115 @@ export function LockScreen() {
     </Phone>
   );
 }
+
+/** AI Agents: the chat (messages passed in from copy, 04 §6). */
+export function AgentChat({ label, messages }: { label: string; messages: readonly { from: string; text: string }[] }) {
+  const name = useBusinessName();
+  return (
+    <Phone label={`${name} AI agent answering a customer`}>
+      <div className="flex h-full flex-col bg-[#f4f4f2]">
+        <StatusBar />
+        <div className="flex items-center gap-2 bg-white px-4 py-3">
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-[#0a0a0a] text-[9px] font-bold text-[#d4af37]">{initials(name)}</span>
+          <span className="min-w-0">
+            <span className="block truncate text-[11px] font-semibold">{name}</span>
+            <span className="block text-[9px] text-[#3f7d4f]">AI agent · online</span>
+          </span>
+        </div>
+        <p className="px-4 pt-3 text-center text-[9px] text-[#6e6e6a]">{label}</p>
+        <div className="flex-1 space-y-1.5 overflow-hidden px-3 py-2">
+          {messages.map((msg, i) => (
+            <p
+              key={i}
+              className={`max-w-[84%] rounded-2xl px-3 py-2 text-[10px] leading-snug ${
+                msg.from === "agent" ? "bg-white text-[#0a0a0a]" : "ml-auto bg-[#0a0a0a] text-white"
+              }`}
+            >
+              {msg.text}
+            </p>
+          ))}
+        </div>
+      </div>
+    </Phone>
+  );
+}
+
+/** Digital Products: a booking app screen. */
+export function BookingApp() {
+  const name = useBusinessName();
+  const slots = ["9:00", "10:30", "12:00", "14:00", "15:30", "17:00"];
+  return (
+    <Phone label={`${name} booking app`}>
+      <div className="flex h-full flex-col bg-white">
+        <StatusBar />
+        <div className="px-4 pt-4">
+          <p className="text-[10px] text-[#6e6e6a]">{name}</p>
+          <p className="text-[18px] font-semibold leading-tight tracking-[-0.03em]">Book an appointment</p>
+        </div>
+        <div className="mt-4 grid grid-cols-7 gap-1 px-4 text-center text-[9px]">
+          {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+            <span key={i} className="text-[#6e6e6a]">
+              {d}
+            </span>
+          ))}
+          {Array.from({ length: 14 }, (_, i) => (
+            <span key={i} className={`grid aspect-square place-items-center rounded-md ${i === 9 ? "bg-[#0a0a0a] font-semibold text-white" : "bg-[#f3f3f1]"}`}>
+              {i + 10}
+            </span>
+          ))}
+        </div>
+        <p className="px-4 pt-4 text-[10px] font-semibold">Saturday 19</p>
+        <div className="grid grid-cols-3 gap-1.5 px-4 pt-2">
+          {slots.map((s, i) => (
+            <span key={s} className={`rounded-md py-2 text-center text-[10px] font-semibold ${i === 2 ? "bg-[#d4af37]" : "bg-[#f3f3f1]"}`}>
+              {s}
+            </span>
+          ))}
+        </div>
+        <span className="mx-4 mt-auto mb-5 rounded-md bg-[#0a0a0a] py-2.5 text-center text-[10.5px] font-semibold text-white">Confirm 12:00</span>
+      </div>
+    </Phone>
+  );
+}
+
+/** Digital University: a course screen. */
+export function CourseScreen() {
+  const lessons = [
+    { t: "Set up your Google Business profile", d: "12 min", done: true },
+    { t: "Write a homepage that sells", d: "18 min", done: true },
+    { t: "Take product photos on your phone", d: "15 min", done: false },
+    { t: "Get your first 10 reviews", d: "10 min", done: false },
+  ];
+  return (
+    <Phone label="A Digital University course on a phone">
+      <div className="flex h-full flex-col bg-[#0a0a0a] text-white">
+        <StatusBar dark />
+        <div className="px-4 pt-4">
+          <p className="text-[10px] text-[#9a9a95]">Digital University</p>
+          <p className="text-[17px] font-semibold leading-tight tracking-[-0.03em]">Get found online</p>
+          <div className="mt-3 h-1.5 bg-[#262626]">
+            <div className="h-full w-1/2 bg-[#d4af37]" />
+          </div>
+          <p className="mt-1.5 text-[9px] text-[#9a9a95]">2 of 4 lessons</p>
+        </div>
+        <ul className="mt-4 space-y-1.5 px-3">
+          {lessons.map((l) => (
+            <li key={l.t} className="flex items-center gap-2.5 rounded-xl bg-[#161616] p-2.5">
+              <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[9px] ${l.done ? "bg-[#d4af37] text-[#0a0a0a]" : "bg-[#262626]"}`}>
+                {l.done ? (
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12.5 10 17.5 19 7" />
+                  </svg>
+                ) : null}
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[10px] font-semibold leading-snug">{l.t}</span>
+                <span className="block text-[9px] text-[#9a9a95]">{l.d}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Phone>
+  );
+}

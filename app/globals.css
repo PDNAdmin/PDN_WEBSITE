@@ -57,6 +57,16 @@
   }
 }
 
+/* each field sets its own roles, so a white card inside a black section is truly white */
+.field-white {
+  --ground: #ffffff;
+  --ink: #0a0a0a;
+  --grey: #6e6e6a;
+  --tone: #f3f3f1;
+  --tone-2: #e9e9e6;
+  --line: #d8d8d4;
+  color-scheme: light;
+}
 .field-black {
   --ground: #0a0a0a;
   --ink: #ffffff;
@@ -432,11 +442,6 @@
   .faq-item[open]::details-content {
     block-size: auto;
   }
-
-  .{
-    content-visibility: auto;
-    contain-intrinsic-size: auto 1000px;
-  }
 }
 
 @supports (interpolate-size: allow-keywords) {
@@ -551,4 +556,37 @@
   to {
     stroke-dashoffset: 0;
   }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* HOME.PROCESS sideways run: only while the pinned GSAP scene is active */
+.is-hscroll .process-pin {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 0;
+}
+.is-hscroll .process-track {
+  display: flex;
+  width: max-content;
+}
+.is-hscroll .process-step {
+  width: min(40vw, 540px);
+}
+.is-hscroll .process-cta {
+  display: flex;
+  width: min(36vw, 480px);
+  align-items: flex-end;
+}
+.is-hscroll .process-line {
+  display: block;
+}
+.is-hscroll .process-note {
+  display: none;
 }

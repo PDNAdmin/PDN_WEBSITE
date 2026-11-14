@@ -6,6 +6,9 @@ and anyone generating images.
 ## The rule
 
 > If a picture could have come from a prompt, it doesn't go on the site or in the reel.
+>
+> **Update 2026-11-14 (PDN decision):** realistic generated *illustrative scenes* are now allowed on the sales page and in ads,
+> with strict rules (never as clients, team or testimonials). Prompts, filenames and the realism checklist: `prompt/assets.md`.
 
 Every reference studio looks real because it shows **real client work, real screens and real people**.
 So the order of preference is:
@@ -18,9 +21,8 @@ So the order of preference is:
 
 ## 1. Retire the v1 images
 
-The 36 files in `assets/PDN-Complete-Assets/` (glossy gold-tube renders: ILL-01 to ILL-15, TEX-01 to 05,
-3D-01/02, SR-01 to SR-07) are no longer used by the site. They are the main reason v1 read as AI-generated.
-Keep them out of the reel too. (Deleting them from the repo is a separate decision for PDN.)
+The 36 v1 glossy gold-tube renders (ILL-01 to ILL-15, TEX-01 to 05, 3D-01/02, SR-01 to SR-07) were deleted from the
+repo on 2026-11-14. They were the main reason v1 read as AI-generated. Don't bring them back into the reel.
 
 ## 2. Screen recordings (the heart of the reel)
 

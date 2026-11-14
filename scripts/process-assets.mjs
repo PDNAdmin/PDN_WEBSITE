@@ -1,9 +1,7 @@
 // pnpm assets: converts raw files in /assets into /public/img (AVIF + WebP) and reports what's missing.
 // Never edits /assets. Writes lib/assets.generated.json so components render placeholders for missing files.
 //
-// Lookup order for each manifest file:
-//   1. assets/<path>                                  (canonical drop zone, docs/05 §9)
-//   2. assets/PDN-Complete-Assets/assets/<path>       (the delivered asset bundle)
+// Each manifest file is read from assets/<path> (the team drop zone).
 import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,7 +10,6 @@ import { generated, other, real, videos } from "./asset-manifest.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = join(root, "assets");
-const BUNDLE = join(ASSETS, "PDN-Complete-Assets", "assets");
 const OUT = join(root, "public", "img");
 const GEN = join(root, "lib", "assets.generated.json");
 const force = process.argv.includes("--force");
@@ -22,8 +19,6 @@ const C = { red: "\x1b[31m", yellow: "\x1b[33m", green: "\x1b[32m", dim: "\x1b[2
 function locate(rel) {
   const a = join(ASSETS, rel);
   if (existsSync(a)) return { path: a, from: "assets" };
-  const b = join(BUNDLE, rel);
-  if (existsSync(b)) return { path: b, from: "bundle" };
   return null;
 }
 
@@ -81,23 +76,6 @@ for (const a of generated) {
   result[a.id] = entry;
 }
 
-// Grain: TEX-01 → 256px greyscale PNG tile. If TEX-01 is missing, scripts/make-grain.mjs provides it.
-const grainOut = join(OUT, "textures", "grain.png");
-const tex01 = locate("textures/TEX-01_grain-tile.png");
-mkdirSync(dirname(grainOut), { recursive: true });
-if (tex01) {
-  if (!fresh(tex01.path, grainOut)) {
-    await sharp(tex01.path)
-      .extract({ left: 0, top: 0, width: 256, height: 256 })
-      .greyscale()
-      .png({ compressionLevel: 9, palette: true, colors: 64 })
-      .toFile(grainOut);
-    made++;
-  }
-} else if (!existsSync(grainOut)) {
-  await import("./make-grain.mjs");
-}
-
 // Found pictures (open collections, credited in found/credits.json): found/*.jpg → public/img/found/
 const FOUND = join(root, "found");
 if (existsSync(FOUND)) {
@@ -125,7 +103,7 @@ for (const o of other) {
 }
 
 // Real material
-const allFiles = [...walk(ASSETS).filter((f) => !f.startsWith("PDN-Complete-Assets/")), ...walk(BUNDLE)];
+const allFiles = walk(ASSETS);
 const realMissing = [];
 for (const r of real) {
   const ok = r.files ? r.files.every((f) => allFiles.includes(f)) : allFiles.some((f) => r.pattern.test(f));
@@ -147,10 +125,11 @@ writeFileSync(GEN, JSON.stringify(result, null, 2) + "\n");
 console.log(`\n${C.bold}PDN asset pipeline${C.reset}  ${C.dim}(${made} files written to public/img)${C.reset}`);
 const present = generated.filter((a) => result[a.id].exists).length;
 console.log(`${C.green}✓ ${present}/${generated.length} generated images present${C.reset}`);
-if (fromBundle.length) {
-  console.log(
-    `${C.yellow}! ${fromBundle.length} read from assets/PDN-Complete-Assets/assets/ (not the canonical assets/<folder>/ paths).${C.reset}`,
-  );
+const toGenerate = generated.filter((a) => a.optional && !result[a.id].exists);
+if (toGenerate.length) {
+  console.log(`
+${C.yellow}${C.bold}Still to generate (prompt/assets.md), the site shows its fallback until then:${C.reset}`);
+  for (const a of toGenerate) console.log(`${C.yellow}  - ${a.id.padEnd(7)} assets/${a.file}${C.reset}  ${C.dim}(${a.usedBy})${C.reset}`);
 }
 if (!hasQuirkfy) console.log(`${C.yellow}! Quirkfy font missing in brand/fonts/ (headings use Bricolage 800)${C.reset}`);
 
@@ -159,7 +138,7 @@ if (missing.length) {
   for (const m of missing) console.log(`${C.red}  - ${m.id.padEnd(8)} assets/${m.file}${C.reset}  ${C.dim}placeholder: ${m.placeholder}${C.reset}`);
 }
 if (realMissing.length) {
-  console.log(`\n${C.yellow}${C.bold}Real material still to shoot/collect (docs/06):${C.reset}`);
+  console.log(`\n${C.yellow}${C.bold}Real material still to shoot/collect (docs/12):${C.reset}`);
   for (const r of realMissing) console.log(`${C.yellow}  - ${r.label}${C.reset}  ${C.dim}(${r.usedBy})${C.reset}`);
 }
 if (videoMissing.length) {

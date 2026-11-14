@@ -58,12 +58,13 @@ export function BookingForm({
   const [budgetChoice, setBudget] = useState("");
   const [pkg, setPkg] = useState("");
   const [step, setStep] = useState<1 | 2>(1);
-  const [twoStep, setTwoStep] = useState(false);
+  // two short steps on every screen once JS runs; without JS the whole form shows and posts normally
+  const twoStep = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [formError, setFormError] = useState("");
 
-  // mount: timezone defaults, UTM capture, 2-step on mobile
+  // mount: time-trap start, UTM capture
   useEffect(() => {
     started.current = Date.now();
     try {
@@ -84,11 +85,6 @@ export function BookingForm({
       }
       if (changed) sessionStorage.setItem("pdn-utm", JSON.stringify(saved));
     } catch {}
-    const mq = matchMedia("(max-width: 767px)");
-    const apply = () => setTwoStep(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
   }, []);
 
   // budget chips depend on currency: a selection from the other currency's bands doesn't count
@@ -125,14 +121,20 @@ export function BookingForm({
       if (digits.length < 6 || digits.length > 14) e.phone = copy.phone.error;
     }
     if (which === 2 || which === "all") {
-      if (!audience) e.audience = copy.audience.error;
       if (need.length === 0) e.need = copy.need.error;
     }
     return e;
   }
 
+  /** Check one step-1 field when the visitor leaves it (only once they have typed something). */
+  function checkField(k: "name" | "email" | "phone") {
+    if (!val(k)) return;
+    const e = validate(1);
+    setErrors((prev) => ({ ...prev, [k]: e[k] }));
+  }
+
   function focusFirst(e: Errors) {
-    const first = (["name", "email", "phone", "audience", "need"] as const).find((k) => e[k]);
+    const first = (["name", "phone", "email", "need"] as const).find((k) => e[k]);
     if (!first) return;
     const el = formRef.current?.querySelector<HTMLElement>(`[data-field="${first}"] input, [data-field="${first}"] textarea`);
     el?.focus();
@@ -145,7 +147,7 @@ export function BookingForm({
     setStep(2);
     requestAnimationFrame(() => {
       formRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
-      formRef.current?.querySelector<HTMLElement>('[data-field="audience"] input')?.focus({ preventScroll: true });
+      formRef.current?.querySelector<HTMLElement>('[data-field="need"] input')?.focus({ preventScroll: true });
     });
   }
 
@@ -255,36 +257,12 @@ export function BookingForm({
             name="name"
             type="text"
             autoComplete="name"
+            onBlur={() => checkField("name")}
             placeholder={copy.name.placeholder}
             className="input"
             required
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? `${uid}-name-err` : undefined}
-          />
-        </Field>
-        <Field id={`${uid}-business`} name="business" label={copy.business.label}>
-          <input
-            id={`${uid}-business`}
-            name="business"
-            type="text"
-            autoComplete="organization"
-            onInput={(e) => (e.currentTarget.dataset.auto = "0")}
-            placeholder={copy.business.placeholder}
-            className="input"
-          />
-        </Field>
-        <Field id={`${uid}-email`} name="email" label={copy.email.label} error={errors.email}>
-          <input
-            id={`${uid}-email`}
-            name="email"
-            type="email"
-            inputMode="email"
-            autoComplete="email"
-            placeholder={copy.email.placeholder}
-            className="input"
-            required
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? `${uid}-email-err` : undefined}
           />
         </Field>
         <Field id={`${uid}-phone`} name="phone" label={copy.phone.label} error={errors.phone} help={copy.phone.help}>
@@ -309,6 +287,7 @@ export function BookingForm({
               type="tel"
               inputMode="tel"
               autoComplete="tel-national"
+            onBlur={() => checkField("phone")}
               placeholder={copy.phone.placeholder}
               className="input"
               required
@@ -317,23 +296,24 @@ export function BookingForm({
             />
           </div>
         </Field>
+        <Field id={`${uid}-email`} name="email" label={copy.email.label} error={errors.email}>
+          <input
+            id={`${uid}-email`}
+            name="email"
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            onBlur={() => checkField("email")}
+            placeholder={copy.email.placeholder}
+            className="input"
+            required
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? `${uid}-email-err` : undefined}
+          />
+        </Field>
       </div>
 
       <div className={`space-y-8 ${showStep2 ? "" : "hidden"} ${twoStep ? "" : "mt-8"}`}>
-        <ChipGroup
-          legend={copy.audience.label}
-          name="audience"
-          type="radio"
-          options={copy.audience.options}
-          value={audience ? [audience] : []}
-          onChange={(v) => {
-            setAudience(v);
-            if (v === "Client outside Nigeria") setCurrency("usd", false);
-          }}
-          error={errors.audience}
-          uid={uid}
-          required
-        />
         <ChipGroup
           legend={copy.need.label}
           name="need"
@@ -345,6 +325,29 @@ export function BookingForm({
           uid={uid}
           required
         />
+        <ChipGroup
+          legend={copy.audience.label}
+          name="audience"
+          type="radio"
+          options={copy.audience.options}
+          value={audience ? [audience] : []}
+          onChange={(v) => {
+            setAudience(v);
+            if (v === "Client outside Nigeria") setCurrency("usd", false);
+          }}
+          uid={uid}
+        />
+        <Field id={`${uid}-business`} name="business" label={copy.business.label}>
+          <input
+            id={`${uid}-business`}
+            name="business"
+            type="text"
+            autoComplete="organization"
+            onInput={(e) => (e.currentTarget.dataset.auto = "0")}
+            placeholder={copy.business.placeholder}
+            className="input"
+          />
+        </Field>
         <ChipGroup
           legend={copy.budget.label}
           name="budget"

@@ -46,8 +46,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/** Runs before paint: marks JS + device tier (docs/07 §1) so CSS can adapt without layout shift. */
-const tierScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var n=navigator,c=n.connection||{},m=n.deviceMemory,h=n.hardwareConcurrency||4,low=!!c.saveData||(m&&m<=4)||h<=4||/(^|-)(2g|3g)$/.test(c.effectiveType||''),fine=matchMedia('(pointer:fine)').matches,high=fine&&h>=8&&(!m||m>=8)&&!c.saveData;d.setAttribute('data-tier',low?'low':high?'high':'mid')}catch(e){d.setAttribute('data-tier','mid')}})();`;
+/** Runs before paint: marks JS + device tier (docs/07 §1). Low = data-saver, slow network, very weak hardware,
+ * or a budget phone (touch + ≤ 4 cores / ≤ 3 GB). Ordinary laptops are mid or high. */
+const tierScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var n=navigator,c=n.connection||{},m=n.deviceMemory,h=n.hardwareConcurrency||4,fine=matchMedia('(pointer:fine)').matches,low=!!c.saveData||(m&&m<=2)||h<=2||/(^|-)(2g|3g)$/.test(c.effectiveType||'')||(!fine&&(h<=4||(m&&m<=3))),high=fine&&h>=8&&(!m||m>=8)&&!c.saveData;d.setAttribute('data-tier',low?'low':high?'high':'mid')}catch(e){d.setAttribute('data-tier','mid')}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

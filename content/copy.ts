@@ -361,6 +361,31 @@ export const HOME = {
   },
 } as const;
 
+/** 04 §6 `/ai-agents` demo conversation (verbatim). Also used in the services preview on Home. */
+export const AI_DEMO = {
+  label: "Sample conversation for a bakery",
+  messages: [
+    { from: "customer", text: "Hi, do you have chocolate cakes for this Saturday?" },
+    {
+      from: "agent",
+      text: "Yes, we do. We have 8-inch and 10-inch chocolate cakes for Saturday. The 8-inch serves about 12 people. Would you like to order one?",
+    },
+    { from: "customer", text: "8-inch please. Can you deliver to Lekki?" },
+    {
+      from: "agent",
+      text: "We can. Saturday delivery to Lekki runs from 10am to 4pm. Can I take your name and number to confirm the order?",
+    },
+  ],
+  caption: "Your agent is trained on your own products, prices and policies.",
+} as const;
+
+/** 04 §10 (`/book`), served at /contact (the URL PDN uses in ads). */
+export const CONTACT = {
+  eyebrow: "Book a free call",
+  headline: "20 minutes that could **change your business**.",
+  lead: "Tell us about you and what you want to build. We'll come back within {{RESPONSE_TIME}} with honest advice.",
+} as const;
+
 export const THANK_YOU = {
   headlineNamed: "Thank you, {firstName}. **We've got it.**",
   headline: "Thank you. **We've got it.**",
@@ -441,5 +466,9 @@ export const META = {
     title: "Pishon Digital Network · Websites & AI Agents That Bring In Customers",
     description:
       "PDN builds websites and AI agents that make customers trust you, find you and contact you. Lagos-based, working worldwide. Book a free call.",
+  },
+  contact: {
+    title: "Book a Free Call · Pishon Digital Network",
+    description: "20 minutes, honest advice, a clear plan. Tell us about your business.",
   },
 } as const;
