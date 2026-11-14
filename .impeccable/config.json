@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-11-13T19:44:17.547Z",
+        "reason": "docs/07-site-motion.md M-HERO specifies a one-time --grad-sheen sweep over the gold headline phrase; it resolves to solid gold"
+      }
+    ]
+  }
+}

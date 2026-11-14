@@ -1,0 +1,310 @@
+{
+  "ILL-01": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024,
+    "src": "/img/illustrations/ill-01",
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "ILL-01m": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536,
+    "src": "/img/illustrations/ill-01m",
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  "ILL-02": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024,
+    "src": "/img/illustrations/ill-02",
+    "widths": [
+      768,
+      1536
+    ]
+  },
+  "ILL-03": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024,
+    "src": "/img/illustrations/ill-03",
+    "widths": [
+      480,
+      720,
+      1024
+    ]
+  },
+  "ILL-04": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024,
+    "src": "/img/illustrations/ill-04",
+    "widths": [
+      480,
+      720,
+      1024
+    ]
+  },
+  "ILL-05": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024,
+    "src": "/img/illustrations/ill-05",
+    "widths": [
+      480,
+      720,
+      1024
+    ]
+  },
+  "ILL-06": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024,
+    "src": "/img/illustrations/ill-06",
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "ILL-07": {
+    "exists": true,
+    "width": 1254,
+    "height": 1254,
+    "src": "/img/illustrations/ill-07",
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "ILL-08": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024,
+    "src": "/img/illustrations/ill-08",
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "ILL-09": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024,
+    "src": "/img/illustrations/ill-09",
+    "widths": [
+      400,
+      800
+    ]
+  },
+  "ILL-10": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "ILL-11": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "ILL-12": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "ILL-13": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "ILL-13m": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536
+  },
+  "ILL-14": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "ILL-15": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "TEX-01": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024
+  },
+  "TEX-02": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "TEX-03": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "TEX-04": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024,
+    "src": "/img/textures/tex-04",
+    "widths": [
+      960,
+      1536
+    ]
+  },
+  "TEX-05": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "3D-01": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024
+  },
+  "3D-02": {
+    "exists": true,
+    "width": 1024,
+    "height": 1024
+  },
+  "SR-01": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-01-v": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536
+  },
+  "SR-02": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-02-v": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536
+  },
+  "SR-03": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-03-v": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536
+  },
+  "SR-04a": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-04b": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-04c": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-05": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-07": {
+    "exists": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "SR-07-v": {
+    "exists": true,
+    "width": 1024,
+    "height": 1536
+  },
+  "found:lagos-skyline-with-marina": {
+    "exists": true,
+    "width": 1920,
+    "height": 512,
+    "src": "/img/found/lagos-skyline-with-marina",
+    "widths": [
+      800,
+      1280,
+      1920
+    ]
+  },
+  "found:the-third-mainland-bridge-lagos": {
+    "exists": true,
+    "width": 1920,
+    "height": 1323,
+    "src": "/img/found/the-third-mainland-bridge-lagos",
+    "widths": [
+      800,
+      1280,
+      1920
+    ]
+  },
+  "AUDIO": {
+    "exists": false
+  },
+  "VO": {
+    "exists": false
+  },
+  "T1/T2": {
+    "exists": false
+  },
+  "T3": {
+    "exists": false
+  },
+  "T4": {
+    "exists": false
+  },
+  "team.json": {
+    "exists": false
+  },
+  "T5": {
+    "exists": false
+  },
+  "T6": {
+    "exists": false
+  },
+  "T7": {
+    "exists": false
+  },
+  "CLIENTS": {
+    "exists": false
+  },
+  "REC": {
+    "exists": false
+  },
+  "VID-hero-loop": {
+    "exists": false
+  },
+  "VID-showreel-loop": {
+    "exists": false
+  },
+  "VID-showreel-full": {
+    "exists": false
+  },
+  "SR-POSTER": {
+    "exists": false
+  }
+}

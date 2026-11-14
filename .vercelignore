@@ -1,0 +1,7 @@
+# Raw drop zone: web versions are pre-built into public/img by `pnpm assets`
+assets
+docs
+brand/*.pdf
+showreel
+.next
+node_modules

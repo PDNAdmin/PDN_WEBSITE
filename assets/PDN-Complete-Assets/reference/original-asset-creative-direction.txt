@@ -1,0 +1,266 @@
+# PISHON DIGITAL NETWORK — COMPLETE VISUAL ASSET PRODUCTION
+
+## YOUR ROLE
+
+Act as my **Senior Creative Director, 3D Artist, Brand Designer, and Digital Asset Production Manager**.
+
+You are responsible for producing the complete visual asset library for **Pishon Digital Network (PDN)**, a premium global digital studio.
+
+This is a full production assignment, not a brainstorming exercise.
+
+**Your final deliverable must be ONE downloadable ZIP file containing all 36 completed visual assets, organized in the exact folder structure specified below.**
+
+Do not generate unrelated visuals, substitute incorrect images, or deliver a collection of contact sheets.
+
+---
+
+## 1. SOURCE DOCUMENTS — READ THESE FIRST
+
+I have attached three essential references:
+
+1. **05 — Asset Creative Direction & ChatGPT Prompts** (`Pasted text(4).txt`) — The master production document containing individual prompts, visual specifications, dimensions, and the complete asset manifest.
+2. **Pishon Digital Network Logo Guide Updated.pdf** — The official brand guidelines, including the logo, colour palette, and design rules.
+3. **Approved ILL-01 Hero Sculpture** — The visual reference I have personally selected and approved.
+
+Study all three before generating anything.
+
+The Markdown document is the **single source of truth for every asset's subject, composition, aspect ratio, filename, transparency, and intended use**.
+
+Do not reinterpret the prompts or replace the described subjects with generic black-and-gold illustrations.
+
+If an asset conflicts with the brand guide, preserve the requested subject and apply the official brand guidelines.
+
+## 2. LOCKED CREATIVE DIRECTION
+
+**Visual world: Onyx & Gold Sculpture**
+
+PDN exists in a cinematic, dark, silent studio where precious objects float or rest on black stone.
+
+**Materials**
+
+- Onyx Black: `#0F0F10`
+- Pishon Gold: `#D4AF37`
+- Matte-to-satin black stone with subtle grey veining
+- Polished and brushed warm champagne-gold metal
+- Warm gold-tinted volumetric lighting and subtle atmospheric haze
+
+**Signature element: The River**
+
+The River is a smooth, continuous gold tube of constant thickness that follows the official PDN brand motif.
+
+When the River appears, it should enter and exit through the composition's boundaries rather than terminate randomly inside the frame.
+
+Use the official logo guide to maintain recognizable brand geometry.
+
+**Photography and rendering**
+
+- Premium photorealistic 3D
+- High-end product photography aesthetic
+- 50–100mm lens characteristics
+- Dramatic lighting with soft falloff
+- Realistic surface textures and reflections
+- Fine cinematic grain
+- Generous negative space where required
+
+**Strict exclusions**
+
+No text, random letters, watermarks, people, hands, faces, UI screenshots, unrelated symbols, neon colours, chrome, plastic, cartoon rendering, or generic futuristic imagery.
+
+Every asset must look like it belongs to the same premium PDN visual world.
+
+## 3. APPROVED HERO IMAGE
+
+I have already approved the image for:
+
+`assets/illustrations/ILL-01_hero-river-sculpture.png`
+
+**Do not regenerate or create variations of this asset.**
+
+Use my approved image as the anchor reference for all subsequent illustrations.
+
+If it requires resizing or format correction, preserve the original artwork and composition.
+
+## 4. COMPLETE PRODUCTION MANIFEST — 36 FILES
+
+### A. Website illustrations — 17 assets
+
+Directory: `assets/illustrations/`
+
+| ID | Filename | Dimensions |
+|---|---|---|
+| ILL-01 | ILL-01_hero-river-sculpture.png | 1536×1024 |
+| ILL-01m | ILL-01m_hero-river-sculpture-mobile.png | 1024×1536 |
+| ILL-02 | ILL-02_404-lost-river.png | 1536×1024 |
+| ILL-03 | ILL-03_outcome-trust.png | 1024×1024 |
+| ILL-04 | ILL-04_outcome-found.png | 1024×1024 |
+| ILL-05 | ILL-05_outcome-night.png | 1024×1024 |
+| ILL-06 | ILL-06_service-websites.png | 1024×1024 |
+| ILL-07 | ILL-07_service-ai-agents.png | 1024×1024 |
+| ILL-08 | ILL-08_service-products.png | 1024×1024 |
+| ILL-09 | ILL-09_service-university.png | 1024×1024 |
+| ILL-10 | ILL-10_websites-hero.png | 1536×1024 |
+| ILL-11 | ILL-11_insights-hero.png | 1536×1024 |
+| ILL-12 | ILL-12_book-pedestal.png | 1536×1024 |
+| ILL-13 | ILL-13_river-landscape.png | 1536×1024 |
+| ILL-13m | ILL-13m_river-landscape-mobile.png | 1024×1536 |
+| ILL-14 | ILL-14_gold-and-onyx.png | 1536×1024 |
+| ILL-15 | ILL-15_agent-orb.png | 1536×1024 |
+
+ILL-06, ILL-07, ILL-08, and ILL-09 must have genuine transparent PNG backgrounds.
+
+Follow Section 4 of the attached Markdown document for each image's exact scene.
+
+### B. Textures — 5 assets
+
+Directory: `assets/textures/`
+
+| ID | Filename | Dimensions |
+|---|---|---|
+| TEX-01 | TEX-01_grain-tile.png | 1024×1024 |
+| TEX-02 | TEX-02_onyx-macro.jpg | 1536×1024 |
+| TEX-03 | TEX-03_brushed-gold.jpg | 1536×1024 |
+| TEX-04 | TEX-04_gold-smoke.jpg | 1536×1024 |
+| TEX-05 | TEX-05_light-leak.jpg | 1536×1024 |
+
+Requirements:
+
+- TEX-01: seamless, neutral mid-grey film grain, not black-and-gold grain.
+- TEX-02: subtle black onyx stone with faint dark-grey veins.
+- TEX-03: brushed champagne gold with fine directional texture.
+- TEX-04: subtle gold smoke in the lower-left against mostly pure black.
+- TEX-05: cinematic horizontal gold light leak for transition effects.
+
+If the previous Work session's textures are accessible, inspect and reuse those that meet the specification. Otherwise, regenerate them.
+
+### C. 3D material textures — 2 assets
+
+Directory: `assets/3d/`
+
+| ID | Filename | Dimensions |
+|---|---|---|
+| 3D-01 | 3D-01_matcap-gold.png | 1024×1024 |
+| 3D-02 | 3D-02_matcap-onyx.png | 1024×1024 |
+
+Use the sphere lighting, material and orthographic specifications from Section 6 of the Markdown document.
+
+These are intended as 3D matcap textures, not decorative illustrations.
+
+### D. Showreel assets — 12 files
+
+Directory: `assets/showreel/`
+
+| ID | Filename |
+|---|---|
+| SR-01 | stills/SR-01_tube-macro.png |
+| SR-01-v | stills/SR-01-v_tube-macro.png |
+| SR-02 | stills/SR-02_tube-loop.png |
+| SR-02-v | stills/SR-02-v_tube-loop.png |
+| SR-03 | stills/SR-03_onyx-stage.png |
+| SR-03-v | stills/SR-03-v_onyx-stage.png |
+| SR-04a | stills/SR-04a_land-bg.png |
+| SR-04b | stills/SR-04b_land-mid.png |
+| SR-04c | stills/SR-04c_land-fg.png |
+| SR-05 | layers/SR-05_gold-dust.png |
+| SR-07 | stills/SR-07_network.png |
+| SR-07-v | stills/SR-07-v_network.png |
+
+Use 1536×1024 for landscape stills and 1024×1536 for portrait versions, as specified in the source document.
+
+SR-04b, SR-04c, and SR-05 must have genuine alpha transparency because they are intended for separate parallax and compositing layers.
+
+Do not combine those layers into one flattened image.
+
+## 5. PRODUCTION WORKFLOW
+
+You must handle the entire production in one persistent working directory.
+
+**Phase 1 — Preparation**
+
+Read all reference documents, establish the complete asset manifest, recover the approved hero image, and inspect previously completed assets.
+
+**Phase 2 — Production**
+
+Generate images individually, using the exact corresponding prompt in the Markdown document.
+
+You may process 10 images at a time internally to manage production, but all outputs must belong to the same project and folder.
+
+Do not require me to download every batch or repeatedly type "next."
+
+**Phase 3 — Quality assurance**
+
+For every generated asset:
+
+1. Check that it depicts the correct subject.
+2. Verify its dimensions and orientation.
+3. Check the brand colour palette and material consistency.
+4. Verify the filename and output format.
+5. Verify genuine transparency where required.
+6. Check negative space for website headline placement.
+7. Confirm that there is no unwanted text, logo, watermark, or unrelated object.
+
+If an output is incorrect, regenerate or repair it rather than marking it completed.
+
+Do not count duplicate images or contact sheets as separate assets.
+
+**Phase 4 — Packaging**
+
+Save everything using the exact folder paths in the manifest.
+
+Include the original source instructions, brand PDF, and approved hero reference when available, plus:
+
+- `README.md` explaining the asset library
+- `ASSET-MANIFEST.md` listing all 36 files and their validation status
+- `QUALITY-CHECK.md` detailing dimensions, formats, alpha transparency, and completeness
+
+Package the complete project into one ZIP archive.
+
+## 6. REQUIRED FOLDER STRUCTURE
+
+```text
+PDN-Complete-Assets/
+├── assets/
+│   ├── illustrations/
+│   │   └── [17 image files]
+│   ├── textures/
+│   │   └── [5 texture files]
+│   ├── 3d/
+│   │   └── [2 matcap files]
+│   └── showreel/
+│       ├── stills/
+│       │   └── [11 still and parallax files]
+│       └── layers/
+│           └── SR-05_gold-dust.png
+├── reference/
+│   ├── original-asset-creative-direction.txt
+│   ├── pdn-logo-guide.pdf
+│   └── approved-hero-reference.png
+├── README.md
+├── ASSET-MANIFEST.md
+└── QUALITY-CHECK.md
+```
+
+Preserve the exact original image filenames. Do not rename them for convenience.
+
+## 7. FINAL DELIVERY
+
+The final archive must be named:
+
+**PDN-Complete-Assets.zip**
+
+The ZIP must contain the actual individual assets, not just a PDF of previews, contact sheets, or a list of image prompts.
+
+Provide a download link to the ZIP, together with a clear final count of generated, reused, validated, and missing assets.
+
+If any asset cannot be generated successfully, document the precise limitation and identify the missing file. Never claim the package is complete unless every required asset has been verified.
+
+Licensed music, optional voiceover, client screen recordings, authentic team photographs, official logo files, and code-generated SVG icons are outside this 36-image generation count. Do not invent these materials.
+
+## 8. EXECUTION INSTRUCTION
+
+**Start production now.**
+
+Do not ask me to approve the visual direction again. The Onyx & Gold style and ILL-01 anchor are already approved.
+
+Use the attached source documents as your reference, carry out the production sequentially, verify the outputs, and deliver the complete organized asset library as a single ZIP.
+
+If execution limits interrupt the task, retain the current project files and an accurate progress manifest so the next session can resume without regenerating completed assets.

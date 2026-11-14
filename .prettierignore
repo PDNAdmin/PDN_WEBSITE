@@ -1,0 +1,7 @@
+.next
+node_modules
+public
+assets
+brand
+docs
+pnpm-lock.yaml

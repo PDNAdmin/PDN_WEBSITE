@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env*.local
+.env
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+# generated at build time from brand/fonts
+app/fonts/quirkfy/
+
+.vercel
+.env*

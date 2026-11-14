@@ -1,0 +1,50 @@
+[
+ {
+  "file": "assets/lagos-skyline-with-marina.jpg",
+  "media": "image",
+  "ref": "openverse:5abe96fb-03a0-4ea7-8f34-c1d204775128",
+  "title": "Lagos skyline with marina",
+  "creator": "kopee15",
+  "creatorUrl": null,
+  "date": null,
+  "license": "CC BY-SA 2.5",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/w/index.php?curid=144655462",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Lagos_skyline_with_marina.jpg/1920px-Lagos_skyline_with_marina.jpg",
+  "width": 1920,
+  "height": 512,
+  "bytes": 212822,
+  "credit": "\"Lagos skyline with marina\" by kopee15, CC BY-SA 2.5, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-11-14T12:35:09.098Z"
+ },
+ {
+  "file": "assets/the-third-mainland-bridge-lagos.jpg",
+  "media": "image",
+  "ref": "openverse:dac3c395-2e5d-4a58-860f-890888cade65",
+  "title": "The Third Mainland Bridge Lagos",
+  "creator": "s.aderogba",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?title=User:S.aderogba&action=edit&redlink=1",
+  "date": null,
+  "license": "CC BY-SA 4.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/w/index.php?curid=82493768",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/The_Third_Mainland_Bridge_Lagos_.jpg/1920px-The_Third_Mainland_Bridge_Lagos_.jpg",
+  "width": 1920,
+  "height": 1323,
+  "bytes": 273670,
+  "credit": "\"The Third Mainland Bridge Lagos\" by s.aderogba, CC BY-SA 4.0, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-11-14T12:35:19.569Z"
+ }
+]
